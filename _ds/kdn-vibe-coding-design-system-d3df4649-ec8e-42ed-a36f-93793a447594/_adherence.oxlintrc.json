@@ -1,0 +1,184 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "ui_kits/intro-page/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--kdn-accent",
+      "--kdn-accent-50",
+      "--kdn-accent-600",
+      "--kdn-bg",
+      "--kdn-border",
+      "--kdn-content-max",
+      "--kdn-danger",
+      "--kdn-danger-bg",
+      "--kdn-divider",
+      "--kdn-dur",
+      "--kdn-dur-fast",
+      "--kdn-dur-slow",
+      "--kdn-ease",
+      "--kdn-fg",
+      "--kdn-fg-disabled",
+      "--kdn-fg-faded",
+      "--kdn-fg-muted",
+      "--kdn-fg-on-primary",
+      "--kdn-fg-strong",
+      "--kdn-font-mono",
+      "--kdn-font-sans",
+      "--kdn-fs-body",
+      "--kdn-fs-h2",
+      "--kdn-fs-h3",
+      "--kdn-fs-hero",
+      "--kdn-fs-sm",
+      "--kdn-fs-stat",
+      "--kdn-fs-xs",
+      "--kdn-fw-bold",
+      "--kdn-fw-medium",
+      "--kdn-fw-regular",
+      "--kdn-fw-semibold",
+      "--kdn-hero-gradient",
+      "--kdn-info",
+      "--kdn-info-bg",
+      "--kdn-lh-normal",
+      "--kdn-lh-snug",
+      "--kdn-lh-tight",
+      "--kdn-primary",
+      "--kdn-primary-700",
+      "--kdn-radius-lg",
+      "--kdn-radius-md",
+      "--kdn-radius-pill",
+      "--kdn-radius-sm",
+      "--kdn-shadow-1",
+      "--kdn-shadow-2",
+      "--kdn-shadow-hero",
+      "--kdn-sidebar-w",
+      "--kdn-space-1",
+      "--kdn-space-12",
+      "--kdn-space-14",
+      "--kdn-space-2",
+      "--kdn-space-3",
+      "--kdn-space-4",
+      "--kdn-space-5",
+      "--kdn-space-6",
+      "--kdn-space-8",
+      "--kdn-success",
+      "--kdn-success-bg",
+      "--kdn-surface",
+      "--kdn-tag-border",
+      "--kdn-tag-fill",
+      "--kdn-warn",
+      "--kdn-warn-bg"
+    ],
+    "tokenKinds": {
+      "--kdn-primary": "color",
+      "--kdn-accent": "color",
+      "--kdn-primary-700": "color",
+      "--kdn-accent-600": "color",
+      "--kdn-accent-50": "color",
+      "--kdn-bg": "color",
+      "--kdn-surface": "color",
+      "--kdn-border": "color",
+      "--kdn-divider": "color",
+      "--kdn-fg-strong": "color",
+      "--kdn-fg": "color",
+      "--kdn-fg-muted": "color",
+      "--kdn-fg-faded": "color",
+      "--kdn-fg-disabled": "color",
+      "--kdn-fg-on-primary": "color",
+      "--kdn-success": "color",
+      "--kdn-success-bg": "color",
+      "--kdn-info": "color",
+      "--kdn-info-bg": "color",
+      "--kdn-warn": "color",
+      "--kdn-warn-bg": "color",
+      "--kdn-danger": "color",
+      "--kdn-danger-bg": "color",
+      "--kdn-hero-gradient": "other",
+      "--kdn-tag-fill": "color",
+      "--kdn-tag-border": "color",
+      "--kdn-radius-sm": "radius",
+      "--kdn-radius-md": "radius",
+      "--kdn-radius-lg": "radius",
+      "--kdn-radius-pill": "radius",
+      "--kdn-shadow-1": "shadow",
+      "--kdn-shadow-2": "shadow",
+      "--kdn-shadow-hero": "shadow",
+      "--kdn-space-1": "spacing",
+      "--kdn-space-2": "spacing",
+      "--kdn-space-3": "spacing",
+      "--kdn-space-4": "spacing",
+      "--kdn-space-5": "spacing",
+      "--kdn-space-6": "spacing",
+      "--kdn-space-8": "spacing",
+      "--kdn-space-12": "spacing",
+      "--kdn-space-14": "spacing",
+      "--kdn-font-sans": "font",
+      "--kdn-font-mono": "font",
+      "--kdn-fs-hero": "spacing",
+      "--kdn-fs-stat": "spacing",
+      "--kdn-fs-h2": "spacing",
+      "--kdn-fs-h3": "spacing",
+      "--kdn-fs-body": "spacing",
+      "--kdn-fs-sm": "spacing",
+      "--kdn-fs-xs": "spacing",
+      "--kdn-fw-bold": "other",
+      "--kdn-fw-semibold": "other",
+      "--kdn-fw-medium": "other",
+      "--kdn-fw-regular": "other",
+      "--kdn-lh-tight": "other",
+      "--kdn-lh-snug": "other",
+      "--kdn-lh-normal": "other",
+      "--kdn-content-max": "spacing",
+      "--kdn-sidebar-w": "spacing",
+      "--kdn-ease": "other",
+      "--kdn-dur-fast": "other",
+      "--kdn-dur": "other",
+      "--kdn-dur-slow": "other"
+    },
+    "fontFamilies": []
+  }
+}

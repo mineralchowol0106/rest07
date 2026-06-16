@@ -1,0 +1,222 @@
+/* =========================================================
+   KDN Vibe Coding — Design Tokens
+   Source: github.com/aebonlee/web-kdn (app.py, .streamlit/config.toml)
+   ========================================================= */
+
+/* ---------- Fonts ----------
+   The repo doesn't ship font files; it relies on the local OS
+   Korean stack (Apple SD Gothic Neo, Segoe UI, Pretendard, Noto Sans KR).
+   We pull Pretendard from the CDN — it's the canonical Korean
+   modern sans designed to pair with Apple SD Gothic Neo / -apple-system.
+   FLAG: if you have a licensed Pretendard .woff2, drop it in fonts/
+   and switch this to a local @font-face block.
+*/
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css");
+
+:root {
+  /* ---------- Brand colors (from app.py constants) ---------- */
+  --kdn-primary:      #1B2A4A;  /* deep navy — PRIMARY */
+  --kdn-accent:       #0046C8;  /* royal blue — ACCENT */
+  --kdn-primary-700:  #14213A;  /* darker navy for press */
+  --kdn-accent-600:   #003BA8;  /* darker accent for hover */
+  --kdn-accent-50:    #E7EEFA;  /* tinted accent surface */
+
+  /* ---------- Neutrals (Streamlit theme + inline cards) ---------- */
+  --kdn-bg:           #FFFFFF;  /* page background */
+  --kdn-surface:      #F4F6FA;  /* card / sidebar surface */
+  --kdn-border:       #E5E9F2;  /* hairline border */
+  --kdn-divider:      #E5E7EB;  /* st.divider() neutral */
+
+  /* ---------- Text ---------- */
+  --kdn-fg-strong:    #111111;  /* card org name */
+  --kdn-fg:           #1A1A1A;  /* default text */
+  --kdn-fg-muted:     #374151;  /* card body copy */
+  --kdn-fg-faded:     #4B5563;  /* stat labels */
+  --kdn-fg-disabled:  #6B7280;  /* period / metadata */
+  --kdn-fg-on-primary:#FFFFFF;  /* text on navy/accent */
+
+  /* ---------- Semantic (Streamlit defaults) ---------- */
+  --kdn-success:      #16A34A;
+  --kdn-success-bg:   #DCFCE7;
+  --kdn-info:         #0EA5E9;
+  --kdn-info-bg:      #E0F2FE;
+  --kdn-warn:         #D97706;
+  --kdn-warn-bg:      #FEF3C7;
+  --kdn-danger:       #DC2626;
+  --kdn-danger-bg:    #FEE2E2;
+
+  /* ---------- Signature gradient (hero) ---------- */
+  --kdn-hero-gradient: linear-gradient(135deg, #1B2A4A 0%, #0046C8 100%);
+
+  /* ---------- Translucent overlays (used on hero tags) ---------- */
+  --kdn-tag-fill:     rgba(255, 255, 255, 0.18);
+  --kdn-tag-border:   rgba(255, 255, 255, 0.35);
+
+  /* ---------- Radii ---------- */
+  --kdn-radius-sm:    8px;
+  --kdn-radius-md:    12px;   /* cards */
+  --kdn-radius-lg:    16px;   /* hero block */
+  --kdn-radius-pill:  999px;  /* tags / pills */
+
+  /* ---------- Shadow (subtle — Streamlit barely uses them) ---------- */
+  --kdn-shadow-1:     0 1px 2px rgba(17, 24, 39, 0.04);
+  --kdn-shadow-2:     0 4px 12px rgba(27, 42, 74, 0.08);
+  --kdn-shadow-hero:  0 12px 32px rgba(0, 70, 200, 0.18);
+
+  /* ---------- Spacing scale (8pt base, with 4pt half-steps) ---------- */
+  --kdn-space-1:      4px;
+  --kdn-space-2:      8px;
+  --kdn-space-3:      12px;
+  --kdn-space-4:      16px;
+  --kdn-space-5:      20px;
+  --kdn-space-6:      24px;
+  --kdn-space-8:      32px;
+  --kdn-space-12:     48px;
+  --kdn-space-14:     56px;
+
+  /* ---------- Type — family ---------- */
+  --kdn-font-sans: "Pretendard Variable", Pretendard, -apple-system,
+                   BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo",
+                   "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --kdn-font-mono: "JetBrains Mono", "D2Coding", ui-monospace, SFMono-Regular,
+                   Menlo, Consolas, monospace;
+
+  /* ---------- Type — scale ---------- */
+  --kdn-fs-hero:      2.6rem;   /* hero h1 */
+  --kdn-fs-stat:      2.2rem;   /* stat number */
+  --kdn-fs-h2:        1.5rem;   /* section title */
+  --kdn-fs-h3:        1.15rem;  /* hero sub / sub-section */
+  --kdn-fs-body:      1rem;
+  --kdn-fs-sm:        0.95rem;  /* card role */
+  --kdn-fs-xs:        0.85rem;  /* meta / tag / period */
+
+  --kdn-fw-bold:      800;      /* hero / stat */
+  --kdn-fw-semibold:  700;      /* section titles, role */
+  --kdn-fw-medium:    600;      /* org names */
+  --kdn-fw-regular:   400;
+
+  --kdn-lh-tight:     1.1;
+  --kdn-lh-snug:      1.35;
+  --kdn-lh-normal:    1.6;
+
+  /* ---------- Layout ---------- */
+  --kdn-content-max:  1200px;
+  --kdn-sidebar-w:    260px;
+
+  /* ---------- Motion ---------- */
+  --kdn-ease:         cubic-bezier(0.4, 0, 0.2, 1);
+  --kdn-dur-fast:     120ms;
+  --kdn-dur:          200ms;
+  --kdn-dur-slow:     500ms;    /* loading screen fade */
+}
+
+/* =========================================================
+   Element defaults — apply tokens to base HTML
+   ========================================================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--kdn-bg);
+  color: var(--kdn-fg);
+  font-family: var(--kdn-font-sans);
+  font-size: 16px;
+  line-height: var(--kdn-lh-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  color: var(--kdn-fg-strong);
+  font-weight: var(--kdn-fw-bold);
+  line-height: var(--kdn-lh-tight);
+  margin: 0 0 var(--kdn-space-3) 0;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--kdn-fs-hero); }
+h2 { font-size: var(--kdn-fs-h2); font-weight: var(--kdn-fw-semibold); }
+h3 { font-size: var(--kdn-fs-h3); font-weight: var(--kdn-fw-semibold); }
+
+p  { font-size: var(--kdn-fs-body); color: var(--kdn-fg); margin: 0 0 var(--kdn-space-3); }
+
+code, pre, kbd {
+  font-family: var(--kdn-font-mono);
+  font-size: 0.92em;
+  background: var(--kdn-surface);
+  border: 1px solid var(--kdn-border);
+  border-radius: 6px;
+  padding: 1px 6px;
+}
+
+a { color: var(--kdn-accent); text-decoration: none; }
+a:hover { color: var(--kdn-accent-600); text-decoration: underline; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--kdn-divider);
+  margin: var(--kdn-space-6) 0;
+}
+
+/* =========================================================
+   Semantic component classes (mirror app.py inline CSS)
+   ========================================================= */
+
+/* Hero block — navy→blue gradient, white text, large title + pill tags */
+.kdn-hero {
+  background: var(--kdn-hero-gradient);
+  color: var(--kdn-fg-on-primary);
+  padding: var(--kdn-space-14) var(--kdn-space-12);
+  border-radius: var(--kdn-radius-lg);
+  margin-bottom: var(--kdn-space-8);
+}
+.kdn-hero h1 {
+  font-size: var(--kdn-fs-hero);
+  margin: 0 0 var(--kdn-space-2);
+  font-weight: var(--kdn-fw-bold);
+  color: #fff;
+}
+.kdn-hero .sub {
+  font-size: var(--kdn-fs-h3);
+  margin: 0;
+  opacity: 0.92;
+}
+
+/* Pill tag — translucent white on hero */
+.kdn-tag {
+  display: inline-block;
+  background: var(--kdn-tag-fill);
+  border: 1px solid var(--kdn-tag-border);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: var(--kdn-radius-pill);
+  font-size: var(--kdn-fs-xs);
+  margin-right: var(--kdn-space-2);
+  margin-bottom: 6px;
+}
+
+/* Section title — accent left rule */
+.kdn-section-title {
+  border-left: 4px solid var(--kdn-accent);
+  padding-left: var(--kdn-space-3);
+  margin: var(--kdn-space-2) 0 var(--kdn-space-4) 0;
+  font-weight: var(--kdn-fw-semibold);
+  font-size: var(--kdn-fs-h2);
+  color: var(--kdn-fg-strong);
+}
+
+/* Surface card — used for career, projects, edu */
+.kdn-card {
+  background: var(--kdn-surface);
+  border: 1px solid var(--kdn-border);
+  border-radius: var(--kdn-radius-md);
+  padding: var(--kdn-space-5) var(--kdn-space-6);
+  margin-bottom: 14px;
+}
+.kdn-card .role   { color: var(--kdn-accent);    font-weight: var(--kdn-fw-semibold); font-size: var(--kdn-fs-sm); }
+.kdn-card .org    { color: var(--kdn-fg-strong); font-weight: var(--kdn-fw-medium); }
+.kdn-card .period { color: var(--kdn-fg-disabled); font-size: var(--kdn-fs-xs); }
+.kdn-card .desc   { color: var(--kdn-fg-muted); margin-top: var(--kdn-space-2); }
+
+/* Stat block — big accent number + small label */
+.kdn-stat-num   { font-size: var(--kdn-fs-stat); font-weight: var(--kdn-fw-bold);
+                  color: var(--kdn-accent); line-height: 1; }
+.kdn-stat-label { color: var(--kdn-fg-faded); font-size: 0.9rem; margin-top: var(--kdn-space-1); }
